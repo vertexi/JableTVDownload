@@ -13,7 +13,7 @@ def scrape(ci, folderPath, downloadList, urls):
     saveName = os.path.join(folderPath, fileName + ".mp4")
     if os.path.exists(saveName):
         # 跳過已下載
-        print('\r當前目標: {0} 已下載, 故跳過...剩餘 {1} 個'.format(
+        print('\33[2K\r當前目標: {0} 已下載, 故跳過...剩餘 {1} 個'.format(
             urls.split('/')[-1], len(downloadList)), end='', flush=True)
     else:
         response = requests.get(urls, headers=headers, timeout=10)
@@ -23,7 +23,7 @@ def scrape(ci, folderPath, downloadList, urls):
         with open(saveName, 'ab') as f:
             f.write(content_ts)
             # 輸出進度
-            print('\r當前下載: {0} , 剩餘 {1} 個'.format(
+            print('\33[2K\r當前下載: {0} , 剩餘 {1} 個'.format(
                 urls.split('/')[-1], len(downloadList)), end='', flush=True)
 
     downloadList.remove(urls)
